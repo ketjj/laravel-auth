@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('id','desc')->paginate(10);
+        $posts = Post::orderBy('id')->paginate(10);
         return view('admin.posts.index',compact('posts'));
     }
 
@@ -67,6 +67,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        $post = Post::find($id);
+        if($post){
+            return view('admin.posts.edit', compact('post'));
+        }
+        abort(404, 'Post non presente nella pagina');
 
     }
 
@@ -77,9 +82,20 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, Post $post)
     {
-        //
+        $data = $request->all();
+
+        if($post->title != $data['title']){
+            $data['slug'] = Post::SlugGen($data['title']);
+        }
+        else{
+            $data['slug'] = $post->slug;
+        }
+
+        $post->update($data);
+
+        return redirect()->route('admin.posts.show', $post);
     }
 
     /**

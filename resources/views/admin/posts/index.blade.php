@@ -20,7 +20,7 @@
               <td> {{$post->title}}</td>
               <td>
                  <a href="{{ route('admin.posts.show', $post) }}" class="btn btn-warning k_button">SHOW</a>
-                  <a href="#" class="btn btn-info k_button">EDIT</a> 
+                  <a href="{{ route('admin.posts.edit', $post)}}" class="btn btn-info k_button">EDIT</a> 
   
                   {{-- <form class="d-inline" 
                   onsubmit="return confirm('Sicuro di cancellare {{ $posts->title}}?')"
