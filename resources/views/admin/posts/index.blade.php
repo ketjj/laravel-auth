@@ -22,15 +22,15 @@
                  <a href="{{ route('admin.posts.show', $post) }}" class="btn btn-warning k_button">SHOW</a>
                   <a href="{{ route('admin.posts.edit', $post)}}" class="btn btn-info k_button">EDIT</a> 
   
-                  {{-- <form class="d-inline" 
-                  onsubmit="return confirm('Sicuro di cancellare {{ $posts->title}}?')"
-                  action="{{ route('admin.posts.destroy', $comic)}}" method="POST">
+                  <form class="d-inline" 
+                  onsubmit="return confirm('Sicuro di cancellare {{ $post->title}}?')"
+                  action="{{ route('admin.posts.destroy', $post)}}" method="POST">
                   @csrf
                   @method('DELETE')
   
                   <button type="submit" class="btn btn-danger k_button">DELETE</button>
   
-                  </form> --}}
+                  </form>
          
               </td>
             </tr>
