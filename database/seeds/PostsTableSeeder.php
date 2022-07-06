@@ -20,7 +20,7 @@ class PostsTableSeeder extends Seeder
             $new_post->title = 'Post for Today';
             $new_post->slug = Post::SlugGen($new_post->title );
             $new_post->content = $faker->text(200);
-            $new_post->image = $faker->image(null, 640, 480);
+            $new_post->image = $faker->imageUrl(640, 480, 'posts');
             $new_post->author = $faker->lastName();
             $new_post->save();
         }
